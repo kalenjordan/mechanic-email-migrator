@@ -106,7 +106,7 @@ function App() {
                   <Text as="h2" variant="headingSm">
                     Shopify Template
                   </Text>
-                  <Scrollable style={{height: '300px'}}>
+                  <Scrollable style={{height: '200px'}}>
                     <TextField
                       value={shopifyTemplate}
                       onChange={handleChange}
@@ -120,30 +120,30 @@ function App() {
             <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
                 <Card sectioned>
                   <BlockStack gap="300">
-                  <InlineStack align="space-between">
-                    <Text as="h2" variant="headingSm">
-                      Generated Mechanic template
-                    </Text>
-                    <Button icon={ClipboardIcon} onClick={handleCopyButton}>
-                      Copy
-                    </Button>
-                    {toastMarkup}
-                  </InlineStack>
-                  <Scrollable style={{height: '300px'}}>
-                    <TextField
-                      disabled
-                      value={mechanicTemplate}
-                      multiline={4}
-                      autoComplete="off"
-                    />             
-                  </Scrollable>
+                    <InlineStack align="space-between">
+                      <Text as="h2" variant="headingSm">
+                        Generated Mechanic template
+                      </Text>
+                      <Button icon={ClipboardIcon} onClick={handleCopyButton}>
+                        Copy
+                      </Button>
+                      {toastMarkup}
+                    </InlineStack>
+                    <Scrollable style={{height: '200px'}}>
+                      <TextField
+                        disabled
+                        value={mechanicTemplate}
+                        multiline={4}
+                        autoComplete="off"
+                      />             
+                    </Scrollable>
                   </BlockStack>
                 </Card>
             </Grid.Cell>        
           </Grid>
           <Card>
           <Text as="h2" variant="headingSm">Preview</Text>
-            <iframe srcDoc={markup} width="700" height="500"></iframe>
+            <iframe id="email-preview" srcDoc={markup} width="100%" height="800"></iframe>
           </Card>
         </BlockStack>
         <FooterHelp>
