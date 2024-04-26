@@ -8,7 +8,7 @@ import '@shopify/polaris/build/esm/styles.css';
 function App() {
   return (
     <AppProvider i18n={enTranslations}>
-    <Page title="Shopify To Mechanic Email Template Converter">
+    <Page title="Shopify To Mechanic Email Template Converter 2">
       <Card>
         <Button onClick={() => alert('Button clicked!')}>It's ALIIIIIIIVEEEEE</Button>
       </Card>
