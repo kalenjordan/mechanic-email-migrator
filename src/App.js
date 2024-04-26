@@ -12,27 +12,38 @@ import { useLocalStorage } from "./useLocalStorage";
 import { ClipboardIcon } from '@shopify/polaris-icons';
 import { useLiquid, RENDER_STATUS } from 'react-liquid'
 
+
+/*
+TODO
+{% assign order.total_discounts | times: 100 = 0 %} - that's not good.
+*/
 function App() {
 
   const [shopifyTemplate, setShopifyTemplate] = useLocalStorage('shopify_template', '');
   const [mechanicTemplate, setMechanicTemplate] = useLocalStorage('mechanic_template', '');
+  let [orderPayload, setOrderPayload] = useLocalStorage('order_payload', '');
+  let [shopPayload, setShopPayload] = useLocalStorage('shop_payload', '');
   
   let replacements = {
     'subtotal_price': 'order.subtotal_price | times: 100',
-    'total_order_discount_amount': 'order.total_order_discount_amount | times: 100',
-    'shipping_price': 'order.shipping_price',
+    'total_order_discount_amount': 'order.total_discounts | times: 100',
+    'shipping_price': 'order.total_shipping_price_set.shop_money.amount',
     'order_name': 'order.name',
+    ' subtotal_line_items': ' order.line_items',
+    'shipping_amount': 'order.total_shipping_price_set.shop_money.amount',
+    'shipping_address': 'order.shipping_address',
+    'billing_address': 'order.billing_address',
+    'requires_shipping': 'order.requires_shipping', // need to iterate over line items to populate this
     /*
-    'shipping_amount': '',
-    'shipping_discount': '',
-    'total_duties': '',
-    'tax_price': '',
-    'total_tip': '',
-    'transaction_amount': '',
-    'due_at_date': '',
-    'payment_terms.next_payment.amount_due': '',
-    'consolidated_estimated_delivery_time': '',
-    'po_number': '',
+    'shipping_discount': 'TBD',
+    'total_duties': 'TBD',
+    'tax_price': 'TBD',
+    'total_tip': 'TBD',
+    'transaction_amount': 'TBD',
+    'due_at_date': 'TBD',
+    'payment_terms.next_payment.amount_due': 'TBD',
+    'consolidated_estimated_delivery_time': 'TBD',
+    'po_number': 'TBD',
     'transactions': '',
     'transaction_count': '',
     'order_status_url': '',
@@ -40,9 +51,6 @@ function App() {
     'discount_applications': '',
     'payment_terms': '',
     'refund_method_title': '',
-    'requires_shipping': '',
-    'shipping_address': '',
-    'billing_address': '',
     'company_location': '',
     'delivery_promise_branded_shipping_line': '',
     */
@@ -63,16 +71,19 @@ function App() {
     [],
   );
 
-  const data = {
-      transactions: [],
-      order: {
-        subtotal_price: 10,
-        total_order_discount_amount: 0,
-      },
-      shop: {
-        name: 'Kalen Test Store'
-      }
-  }
+  const handleOrderPayloadChange = useCallback(
+    (orderPayload) => { 
+      setOrderPayload(orderPayload);
+    },
+    [],
+  );
+
+  const handleShopPayloadChange = useCallback(
+    (shopPayload) => { 
+      setShopPayload(shopPayload);
+    },
+    [],
+  );
 
   const [active, setActive] = useState(false);
 
@@ -87,10 +98,13 @@ function App() {
     toggleActive();
   }, []);
 
-  console.log("mechanic template", mechanicTemplate);
+  const data = {
+    transactions: [],
+    order: JSON.parse(orderPayload),
+    shop: JSON.parse(shopPayload),
+  }
 
   const { status, markup } = useLiquid(mechanicTemplate, data)
-  // let markup = 'test';
 
   return (
     <AppProvider i18n={enTranslations}>
@@ -141,8 +155,44 @@ function App() {
                 </Card>
             </Grid.Cell>        
           </Grid>
+          <Grid>
+            <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
+              <Card sectioned>    
+                <BlockStack gap="300">
+                  <Text as="h2" variant="headingSm">
+                    Order Payload
+                  </Text>
+                  <Scrollable style={{height: '200px'}}>
+                    <TextField
+                      value={orderPayload}
+                      onChange={handleOrderPayloadChange}
+                      multiline={4}
+                      autoComplete="off"
+                    />
+                  </Scrollable>
+                </BlockStack>      
+              </Card>
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
+              <Card>    
+                <BlockStack gap="300">
+                  <Text as="h2" variant="headingSm">
+                    Shop Details
+                  </Text>
+                  <Scrollable style={{height: '200px'}}>
+                    <TextField
+                      value={shopPayload}
+                      onChange={handleShopPayloadChange}
+                      multiline={4}
+                      autoComplete="off"
+                    />
+                  </Scrollable>
+                </BlockStack>      
+              </Card>
+            </Grid.Cell>        
+          </Grid>
           <Card>
-          <Text as="h2" variant="headingSm">Preview</Text>
+            <Text as="h2" variant="headingSm">Preview</Text>
             <iframe id="email-preview" srcDoc={markup} width="100%" height="800"></iframe>
           </Card>
         </BlockStack>

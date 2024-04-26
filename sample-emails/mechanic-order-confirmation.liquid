@@ -1,10 +1,10 @@
-{% capture email_title %}
-  {% if has_pending_payment %}
+{% capture email_title %} 
+  {% if has_pending_payment %} 
     Thank you for your order!
   {% else %}
     Thank you for your purchase!
   {% endif %}
-{% endcapture %}
+{% endcapture %} 
 {% capture email_body %}
   {% if has_pending_payment %}
     {% if buyer_action_required %}
@@ -94,7 +94,7 @@
                       <tr>
                         <td class="order-number__cell">
                           <span class="order-number__text">
-                            Order {{ order_name }}
+                            Order {{ order.name }}
                           </span>
                         </td>
                       </tr>
@@ -221,7 +221,7 @@
               
             
 <table class="row">
-  {% for line in subtotal_line_items %}
+  {% for line in order.line_items %}
   <tr class="order-list__item">
     <td class="order-list__item__cell">
       <table>
@@ -325,18 +325,18 @@
 
         
 {% assign order_discount_count = 0 %}
-{% assign total_order_discount_amount = 0 %}
+{% assign order.total_discounts | times: 100 = 0 %}
 {% assign has_shipping_discount = false %}
 
 {% for discount_application in discount_applications %}
   {% if discount_application.target_selection == 'all' and discount_application.target_type == 'line_item' %}
     {% assign order_discount_count = order_discount_count | plus: 1 %}
-    {% assign total_order_discount_amount = total_order_discount_amount | plus: discount_application.total_allocated_amount  %}
+    {% assign order.total_discounts | times: 100 = order.total_discounts | times: 100 | plus: discount_application.total_allocated_amount  %}
   {% endif %}
   {% if discount_application.target_type == 'shipping_line' %}
     {% assign has_shipping_discount = true %}
     {% assign shipping_discount = discount_application.title %}
-    {% assign shipping_amount = discount_application.total_allocated_amount %}
+    {% assign order.total_shipping_price_set.shop_money.amount = discount_application.total_allocated_amount %}
   {% endif %}
 {% endfor %}
 
@@ -349,7 +349,7 @@
     </p>
   </td>
   <td class="subtotal-line__value">
-      <strong>{{ order.subtotal_price | plus: order.total_order_discount_amount | times: 100 | money }}</strong>
+      <strong>{{ order.subtotal_price | times: 100 | plus: order.total_discounts | times: 100 | money }}</strong>
   </td>
 </tr>
 
@@ -365,7 +365,7 @@
     </p>
   </td>
   <td class="subtotal-line__value">
-      <strong>-{{ total_order_discount_amount | money }}</strong>
+      <strong>-{{ order.total_discounts | times: 100 | money }}</strong>
   </td>
 </tr>
 
@@ -379,7 +379,7 @@
     </p>
   </td>
   <td class="subtotal-line__value">
-      <strong>-{{ total_order_discount_amount | money }}</strong>
+      <strong>-{{ order.total_discounts | times: 100 | money }}</strong>
   </td>
 </tr>
 
@@ -411,7 +411,7 @@
     </p>
   </td>
   <td class="subtotal-line__value">
-      <strong>{{ shipping_price | money }}</strong>
+      <strong>{{ order.total_shipping_price_set.shop_money.amount | money }}</strong>
   </td>
 </tr>
 
@@ -434,7 +434,7 @@
     <p>
       <span class="subtotal-line__discount">
         <img src="{{ 'notifications/discounttag.png' | shopify_asset_url }}" width="18" height="18" class="discount-tag-icon" />
-        <span class="subtotal-line__discount-title">{{ shipping_discount }} (-{{ shipping_amount | money }})</span>
+        <span class="subtotal-line__discount-title">{{ shipping_discount }} (-{{ order.total_shipping_price_set.shop_money.amount | money }})</span>
       </span>
     </p>
   </td>
@@ -449,7 +449,7 @@
     </p>
   </td>
   <td class="subtotal-line__value">
-      <strong>{{ shipping_price | money }}</strong>
+      <strong>{{ order.total_shipping_price_set.shop_money.amount | money }}</strong>
   </td>
 </tr>
 
@@ -682,16 +682,16 @@
               
             <table class="row">
               <tr>
-                {% if requires_shipping and shipping_address %}
+                {% if requires_shipping and order.shipping_address %}
                   <td class="customer-info__item">
                     <h4>Shipping address</h4>
-                    {{ shipping_address | format_address }}
+                    {{ order.shipping_address | format_address }}
                   </td>
                 {% endif %}
-                {% if billing_address %}
+                {% if order.billing_address %}
                   <td class="customer-info__item">
                     <h4>Billing address</h4>
-                    {{ billing_address | format_address }}
+                    {{ order.billing_address }}
                   </td>
                 {% endif %}
               </tr>
@@ -746,7 +746,7 @@
                 {% endif %}
               </tr>
               <tr>
-                {% if requires_shipping and shipping_address %}
+                {% if requires_shipping and order.shipping_address %}
                   {% if shipping_method %}
                     <td class="customer-info__item">
                       <h4>Shipping method</h4>
