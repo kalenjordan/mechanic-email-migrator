@@ -6,6 +6,8 @@ import { AppProvider, Page, Grid, Text, TextField, Card, InlineGrid, Button, Foo
 import '@shopify/polaris/build/esm/styles.css';
 import { useCallback } from 'react';
 import { useLocalStorage } from "./useLocalStorage";
+import { Icon } from '@shopify/polaris';
+import { ClipboardIcon } from '@shopify/polaris-icons';
 
 function App() {
 
@@ -78,12 +80,15 @@ function App() {
           </Grid.Cell>
           <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
             <Card sectioned>   
-              <InlineGrid gap="400" columns={2}>
+              <div className="cardHeader">
                 <Text as="h2" variant="headingSm">
                   Generated Mechanic template
                 </Text>
-                <Button>Copy</Button>
-              </InlineGrid>       
+                <Button icon={ClipboardIcon}>
+                  Copy
+                </Button>
+              </div>
+              
               <TextField
                 label="Generated Mechanic email template liquid"
                 disabled
@@ -93,6 +98,7 @@ function App() {
               />             
             </Card>
           </Grid.Cell>
+          
         </Grid>
         <Card>
           <Button onClick={() => alert('Button clicked!')}>It's ALIIIIIIIVEEEEE</Button>
