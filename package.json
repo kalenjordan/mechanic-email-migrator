@@ -1,7 +1,7 @@
 {
   "name": "react-test-app",
   "version": "0.1.0",
-  "homepage": "https://kalenjordan.github.io/mechanic-email-migrator",
+  "homepage": "https://kalenjordan.github.io/mechanic-email-converter",
   "private": true,
   "dependencies": {
     "@shopify/polaris": "^13.2.0",
