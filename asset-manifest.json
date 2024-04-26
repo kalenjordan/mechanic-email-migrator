@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/mechanic-email-migrator/static/css/main.522e9a33.css",
-    "main.js": "/mechanic-email-migrator/static/js/main.fcb823cb.js",
+    "main.css": "/mechanic-email-migrator/static/css/main.a099814a.css",
+    "main.js": "/mechanic-email-migrator/static/js/main.f31f3a6f.js",
     "static/js/453.7d2fe1c5.chunk.js": "/mechanic-email-migrator/static/js/453.7d2fe1c5.chunk.js",
-    "static/media/logo.svg": "/mechanic-email-migrator/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/mechanic-email-migrator/index.html",
-    "main.522e9a33.css.map": "/mechanic-email-migrator/static/css/main.522e9a33.css.map",
-    "main.fcb823cb.js.map": "/mechanic-email-migrator/static/js/main.fcb823cb.js.map",
+    "main.a099814a.css.map": "/mechanic-email-migrator/static/css/main.a099814a.css.map",
+    "main.f31f3a6f.js.map": "/mechanic-email-migrator/static/js/main.f31f3a6f.js.map",
     "453.7d2fe1c5.chunk.js.map": "/mechanic-email-migrator/static/js/453.7d2fe1c5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.522e9a33.css",
-    "static/js/main.fcb823cb.js"
+    "static/css/main.a099814a.css",
+    "static/js/main.f31f3a6f.js"
   ]
 }
