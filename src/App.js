@@ -100,9 +100,6 @@ function App() {
           </Grid.Cell>
           
         </Grid>
-        <Card>
-          <Button onClick={() => alert('Button clicked!')}>It's ALIIIIIIIVEEEEE</Button>
-        </Card>
         <FooterHelp>
           This is an {' '}
           <Link monochrome url="https://github.com/kalenjordan/mechanic-email-migrator">
