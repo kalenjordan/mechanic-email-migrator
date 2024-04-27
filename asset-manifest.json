@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mechanic-email-migrator/static/css/main.e36eccc2.css",
-    "main.js": "/mechanic-email-migrator/static/js/main.9bc5a915.js",
+    "main.js": "/mechanic-email-migrator/static/js/main.129582b8.js",
     "static/js/453.7d2fe1c5.chunk.js": "/mechanic-email-migrator/static/js/453.7d2fe1c5.chunk.js",
     "index.html": "/mechanic-email-migrator/index.html",
     "main.e36eccc2.css.map": "/mechanic-email-migrator/static/css/main.e36eccc2.css.map",
-    "main.9bc5a915.js.map": "/mechanic-email-migrator/static/js/main.9bc5a915.js.map",
+    "main.129582b8.js.map": "/mechanic-email-migrator/static/js/main.129582b8.js.map",
     "453.7d2fe1c5.chunk.js.map": "/mechanic-email-migrator/static/js/453.7d2fe1c5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e36eccc2.css",
-    "static/js/main.9bc5a915.js"
+    "static/js/main.129582b8.js"
   ]
 }
