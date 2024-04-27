@@ -11,7 +11,6 @@ import { useState, useCallback } from 'react';
 import { useLocalStorage } from "./useLocalStorage";
 import { ClipboardIcon } from '@shopify/polaris-icons';
 import { useLiquid, RENDER_STATUS } from 'react-liquid'
-import preEmailLiquid from './preEmailLiquid.js';
 
 function App() {
 
