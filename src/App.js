@@ -11,62 +11,25 @@ import { useState, useCallback } from 'react';
 import { useLocalStorage } from "./useLocalStorage";
 import { ClipboardIcon } from '@shopify/polaris-icons';
 import { useLiquid, RENDER_STATUS } from 'react-liquid'
+import preEmailLiquid from './preEmailLiquid.js';
 
-
-/*
-TODO
-{% assign order.total_discounts | times: 100 = 0 %} - that's not good.
-*/
 function App() {
 
   const [shopifyTemplate, setShopifyTemplate] = useLocalStorage('shopify_template', '');
-  const [mechanicTemplate, setMechanicTemplate] = useLocalStorage('mechanic_template', '');
   let [orderPayload, setOrderPayload] = useLocalStorage('order_payload', '');
   let [shopPayload, setShopPayload] = useLocalStorage('shop_payload', '');
+  let [mechanicTemplate, setMechanicTemplate] = useState();
+ 
+  fetch('/mechanic-email-migrator/pre-email.liquid')
+    .then((r) => r.text())
+    .then(text  => {
+      mechanicTemplate = text + shopifyTemplate;
+      setMechanicTemplate(text + shopifyTemplate);
+    }) 
   
-  let replacements = {
-    'subtotal_price': 'order.subtotal_price | times: 100',
-    'total_order_discount_amount': 'order.total_discounts | times: 100',
-    'shipping_price': 'order.total_shipping_price_set.shop_money.amount',
-    'order_name': 'order.name',
-    ' subtotal_line_items': ' order.line_items',
-    'shipping_amount': 'order.total_shipping_price_set.shop_money.amount',
-    'shipping_address': 'order.shipping_address',
-    'billing_address': 'order.billing_address',
-    'requires_shipping': 'order.requires_shipping', // need to iterate over line items to populate this
-    /*
-    'shipping_discount': 'TBD',
-    'total_duties': 'TBD',
-    'tax_price': 'TBD',
-    'total_tip': 'TBD',
-    'transaction_amount': 'TBD',
-    'due_at_date': 'TBD',
-    'payment_terms.next_payment.amount_due': 'TBD',
-    'consolidated_estimated_delivery_time': 'TBD',
-    'po_number': 'TBD',
-    'transactions': '',
-    'transaction_count': '',
-    'order_status_url': '',
-    'subtotal_line_items': '',
-    'discount_applications': '',
-    'payment_terms': '',
-    'refund_method_title': '',
-    'company_location': '',
-    'delivery_promise_branded_shipping_line': '',
-    */
-  };
-
-  const handleChange = useCallback(
+  const handleShopifyTemplateChange = useCallback(
     (shopifyTemplate) => { 
       setShopifyTemplate(shopifyTemplate);
-      let mechanicTemplate = shopifyTemplate;
-
-      for (let key in replacements) {
-        let regex = new RegExp(key, "g");
-        mechanicTemplate = mechanicTemplate.replace(regex, replacements[key]);
-      }
-
-      setMechanicTemplate(mechanicTemplate);
     },
     [],
   );
@@ -100,10 +63,9 @@ function App() {
 
   const data = {
     transactions: [],
-    order: JSON.parse(orderPayload),
-    shop: JSON.parse(shopPayload),
+    order: orderPayload ? JSON.parse(orderPayload) : "",
+    shop: shopPayload ? JSON.parse(shopPayload) : "",
   }
-
   const { status, markup } = useLiquid(mechanicTemplate, data)
 
   return (
@@ -123,7 +85,7 @@ function App() {
                   <Scrollable style={{height: '200px'}}>
                     <TextField
                       value={shopifyTemplate}
-                      onChange={handleChange}
+                      onChange={handleShopifyTemplateChange}
                       multiline={4}
                       autoComplete="off"
                     />
@@ -193,7 +155,7 @@ function App() {
           </Grid>
           <Card>
             <Text as="h2" variant="headingSm">Preview</Text>
-            <iframe id="email-preview" srcDoc={markup} width="100%" height="800"></iframe>
+            <iframe id="email-preview" srcDoc={markup} width="100%" height="1000"></iframe>
           </Card>
         </BlockStack>
         <FooterHelp>

@@ -1,0 +1,14 @@
+{% assign order_name = order.name %}
+{% assign subtotal_price = order.subtotal_price | times: 100 %}
+{% assign total_order_discount_amount = order.total_discounts | times: 100 %}
+
+{% assign shipping_price = order.total_shipping_price_set.shop_money.amount %}
+{% assign shipping_amount = order.total_shipping_price_set.shop_money.amount %}
+{% assign subtotal_line_items = order.line_items %}
+{% assign shipping_address = order.shipping_address %}
+{% assign billing_address = order.billing_address %}
+
+{% comment %} TODO this needs to loop over line items {% endcomment %}
+{% assign requires_shipping = order.requires_shipping %}
+{% assign requires_shipping = true %}
+
