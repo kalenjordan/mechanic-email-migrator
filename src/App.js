@@ -201,17 +201,18 @@ function App() {
                 </Card>
               </Grid.Cell>
             </Grid>
-            <Card>
-              <Text as="h2" variant="headingSm">
-                Preview
-              </Text>
-              <iframe
-                id="email-preview"
-                srcDoc={handleMarkupForPreview()}
-                width="100%"
-                height="1100"
-              ></iframe>
-            </Card>
+            {shopifyTemplate ? (
+              <Card>
+                <iframe
+                  id="email-preview"
+                  srcDoc={handleMarkupForPreview()}
+                  width="100%"
+                  height="1100"
+                ></iframe>
+              </Card>
+            ) : (
+              ""
+            )}
           </BlockStack>
           <FooterHelp>
             This is an{" "}
