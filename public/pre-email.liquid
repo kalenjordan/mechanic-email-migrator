@@ -3,7 +3,6 @@
 
 {% assign shipping_price = order.total_shipping_price_set.shop_money.amount %}
 {% assign shipping_amount = order.total_shipping_price_set.shop_money.amount %}
-{% assign shipping_address = order.shipping_address %}
 
 {% assign subtotal_price = order.subtotal_price | times: 100 %}
 {% assign subtotal_line_items = order.line_items %}
@@ -27,6 +26,10 @@
     {% break %}
   {% endif %}
 {% endfor %}
+
+{% comment %} TODO order.shipping_address and billing_address aren't formatting with format_address {% endcomment %}
+{% assign shipping_address = 'TBD' %} 
+{% assign billing_address = 'TBD' %} 
 
 {% comment %} TODO - This is currently getting set to an empty array. Need to populate it. {% endcomment %}
 {% assign transactions = "" %} 

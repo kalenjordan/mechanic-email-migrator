@@ -22,21 +22,36 @@ import { useState, useCallback } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { ClipboardIcon } from "@shopify/polaris-icons";
 import { useLiquid, RENDER_STATUS } from "react-liquid";
+import packageJson from "../package.json";
 
 function App() {
   const [shopifyTemplate, setShopifyTemplate] = useLocalStorage(
     "shopify_template",
     ""
   );
+
+  let defaultShopPayload = {
+    name: "My Store",
+    email_accent_color: "#1990c6",
+  };
+
   let [orderPayload, setOrderPayload] = useLocalStorage("order_payload", "");
-  let [shopPayload, setShopPayload] = useLocalStorage("shop_payload", "");
+  let [shopPayload, setShopPayload] = useLocalStorage(
+    "shop_payload",
+    JSON.stringify(defaultShopPayload, null, 4)
+  );
   let [mechanicTemplate, setMechanicTemplate] = useState();
 
+  let homepageUrl = packageJson.homepage;
   fetch("/mechanic-email-migrator/pre-email.liquid")
     .then((r) => r.text())
     .then((text) => {
       mechanicTemplate = text + shopifyTemplate;
-      setMechanicTemplate(text + shopifyTemplate);
+      mechanicTemplate = mechanicTemplate.replace(
+        "/assets/notifications/styles.css",
+        homepageUrl + "/email-styles.css"
+      );
+      setMechanicTemplate(mechanicTemplate);
     });
 
   const handleShopifyTemplateChange = useCallback((shopifyTemplate) => {
@@ -51,26 +66,29 @@ function App() {
     setShopPayload(shopPayload);
   }, []);
 
-  const [active, setActive] = useState(false);
+  const [toastActive, setToastActive] = useState(false);
 
-  const toggleActive = useCallback(() => setActive((active) => !active), []);
+  const toggleToastActive = useCallback(
+    () => setToastActive((toastActive) => !toastActive),
+    []
+  );
 
-  const toastMarkup = active ? (
+  const toastMarkup = toastActive ? (
     <Toast
       content="Copied Mechanic template to clipboard"
-      onDismiss={toggleActive}
+      onDismiss={toggleToastActive}
     />
   ) : null;
 
   const handleCopyButton = useCallback(() => {
     navigator.clipboard.writeText(mechanicTemplate);
-    toggleActive();
+    toggleToastActive();
   }, []);
 
   const data = {
     transactions: [],
     order: orderPayload ? JSON.parse(orderPayload) : "",
-    shop: shopPayload ? JSON.parse(shopPayload) : "",
+    shop: JSON.parse(shopPayload),
   };
   const { status, markup } = useLiquid(mechanicTemplate, data);
 
