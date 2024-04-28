@@ -1,0 +1,453 @@
+body,
+.order-list__item__cell > table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.subtotal-line__value > strong {
+  font-size: 24px;
+  color: #555;
+}
+
+.customer-info__item-content > span {
+  font-size: 16px;
+}
+
+.order-list__item-discount-allocation > span {
+  font-size: 14px;
+  margin-left: -4px;
+  color: #999;
+}
+
+.customer-info__item.customer-info__item--last > h4,
+.customer-info__item > h4 {
+  font-weight: 500;
+  font-size: 16px;
+  color: #555;
+  margin: 0 0 5px;
+}
+
+.customer-info__item.customer-info__item--last > p,
+.customer-info__item > p,
+.subtotal-line__title > p,
+.text > p {
+  color: #777;
+  line-height: 150%;
+  font-size: 16px;
+  margin: 0;
+}
+
+.subtotal-line__title > p {
+  line-height: 1.2em;
+}
+
+.return-label__instruction-step > a,
+.shop-name__text > a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #1990c6;
+}
+
+.shop-name__text > a {
+  font-size: 30px;
+  color: #333;
+}
+
+.disclaimer__subtext > a,
+.link__cell > a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #1990c6;
+}
+
+.disclaimer__subtext > a {
+  font-size: 14px;
+}
+
+.body {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.header.row {
+  width: 100%;
+  margin: 40px 0 20px;
+}
+
+.header__cell {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.container,
+.header.row,
+.row,
+.row.content {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.container {
+  width: 560px;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.row,
+.row.content {
+  width: 100%;
+}
+
+.shop-name__cell {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.shop-name__text {
+  font-weight: 400;
+  font-size: 30px;
+  color: #333;
+  margin: 0;
+}
+
+.order-number__cell {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #999;
+}
+
+.order-number__text {
+  font-size: 16px;
+}
+
+.content__cell {
+  padding-bottom: 40px;
+  border: 0;
+}
+
+.button.main-action-cell,
+.row.actions {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.row.actions {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.actions__cell,
+.button__cell,
+.content__cell {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.button.main-action-cell {
+  float: left;
+  margin-right: 15px;
+}
+
+.button__cell {
+  border-radius: 4px;
+}
+
+.button__text {
+  font-size: 16px;
+  text-decoration: none;
+  display: block;
+  color: #fff;
+  padding: 20px 25px;
+}
+
+.link.secondary-action-cell {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-top: 19px;
+}
+
+.link__cell,
+.section__cell {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.section__cell {
+  padding: 40px 0;
+}
+
+.order-list__item {
+  width: 100%;
+}
+
+.order-list__item__cell,
+.order-list__product-description-cell {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.order-list__item__cell {
+  padding-bottom: 15px;
+}
+
+.order-list__product-description-cell {
+  width: 100%;
+}
+
+.order-list__item-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #555;
+}
+
+.order-list__item-variant {
+  font-size: 14px;
+  color: #999;
+}
+
+.order-list__price-cell {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  white-space: nowrap;
+}
+
+.order-list__item-price {
+  color: #555;
+  line-height: 150%;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 0 15px;
+}
+
+.order-list__item-discount-allocation {
+  font-size: 14px;
+  display: block;
+  line-height: 1.4;
+  color: #555;
+  margin: 5px 0 0;
+}
+
+.discount-tag-icon {
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.order-list__item-original-price {
+  font-size: 14px;
+  display: block;
+  text-align: right;
+  color: #999;
+}
+
+.row.section,
+.row.subtotal-lines,
+.row.subtotal-table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.row.subtotal-lines {
+  margin-top: 15px;
+  border-top-width: 1px;
+  border-top-color: #e5e5e5;
+  border-top-style: solid;
+}
+
+.subtotal-line__title,
+.subtotal-line__value,
+.subtotal-spacer {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.subtotal-spacer {
+  width: 40%;
+}
+
+.row.subtotal-table {
+  margin-top: 20px;
+}
+
+.subtotal-line__title,
+.subtotal-line__value {
+  padding: 5px 0;
+}
+
+.row.footer,
+.row.subtotal-table.subtotal-table--total {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-top-color: #e5e5e5;
+  border-top-style: solid;
+}
+
+.row.subtotal-table.subtotal-table--total {
+  margin-top: 20px;
+  border-top-width: 2px;
+}
+
+.total-discount {
+  color: #777;
+  line-height: 1.1;
+  font-size: 16px;
+  margin: 10px 0 0;
+}
+
+.total-discount--amount {
+  font-size: 16px;
+  color: #555;
+}
+
+.customer-info__item {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  padding-bottom: 40px;
+  width: 50%;
+}
+
+.customer-info__item-content {
+  color: #777;
+  line-height: 150%;
+  font-size: 16px;
+  margin: 0;
+}
+
+.customer-info__item-credit {
+  height: 24px;
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: -6px;
+}
+
+.row.footer {
+  border-top-width: 1px;
+}
+
+.footer__cell {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  padding: 35px 0;
+}
+
+.disclaimer__subtext {
+  color: #999;
+  line-height: 150%;
+  font-size: 14px;
+  margin: 0;
+}
+
+.spacer {
+  min-width: 600px;
+  height: 0;
+}
+
+.empty-line {
+  line-height: 0;
+}
+
+.customer-info__item.customer-info__item--last {
+  padding-bottom: 0;
+  width: 50%;
+}
+
+.customer-info__item.customer-info__item--last,
+.empty-line,
+.subtotal-table__line,
+.subtotal-table__small-space {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.subtotal-table__line {
+  border-bottom-width: 1px;
+  border-bottom-color: #e5e5e5;
+  border-bottom-style: solid;
+  height: 1px;
+  padding: 0;
+}
+
+.subtotal-table__small-space {
+  height: 10px;
+}
+
+.subtotal-line__discount {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.subtotal-line__discount-title {
+  font-size: 14px;
+  line-height: 1.1;
+  margin-left: -4px;
+}
+
+.text-icon-container {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.text-icon {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  padding-bottom: 5px;
+  padding-right: 8px;
+}
+
+.text-icon__image {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  padding-bottom: 5px;
+}
+
+.return-creation__subtitle {
+  color: #777;
+  line-height: 150%;
+  font-size: 12px;
+  margin: 0;
+}
+
+.return-creation__subtitle-bold {
+  color: #000;
+}
+
+.return-label__instruction-step {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.section--margin {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: 30px 0 40px;
+}
+
+.small {
+  font-size: 14px;
+}

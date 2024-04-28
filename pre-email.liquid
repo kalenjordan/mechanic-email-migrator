@@ -1,37 +1,44 @@
 {% assign order_name = order.name %}
-{% assign subtotal_price = order.subtotal_price | times: 100 %}
 {% assign total_order_discount_amount = order.total_discounts | times: 100 %}
 
 {% assign shipping_price = order.total_shipping_price_set.shop_money.amount %}
 {% assign shipping_amount = order.total_shipping_price_set.shop_money.amount %}
+
+{% assign subtotal_price = order.subtotal_price | times: 100 %}
 {% assign subtotal_line_items = order.line_items %}
-{% assign shipping_address = order.shipping_address %}
+
 {% assign billing_address = order.billing_address %}
+{% assign tax_price = order.current_total_tax %}
+{% assign transaction_amount = order.current_total_price %}
+{% assign company_location = order.company.location %}
+{% assign po_number = order.po_number %}
+{% assign order_status_url = order.order_status_url %}
+{% assign discount_applications = order.discount_applications %}
 
-{% comment %} TODO this needs to loop over line items {% endcomment %}
-{% assign requires_shipping = order.requires_shipping %}
-{% assign requires_shipping = true %}
+{% assign total_tip = order.total_tip_received %}
+{% assign total_duties = order.current_total_duties_set.shop_money.amount  %}
+{% assign payment_terms = order.payment_terms %}
 
-{% comment %}
-   /*
-    'shipping_discount': 'TBD',
-    'total_duties': 'TBD',
-    'tax_price': 'TBD',
-    'total_tip': 'TBD',
-    'transaction_amount': 'TBD',
-    'due_at_date': 'TBD',
-    'payment_terms.next_payment.amount_due': 'TBD',
-    'consolidated_estimated_delivery_time': 'TBD',
-    'po_number': 'TBD',
-    'transactions': '',
-    'transaction_count': '',
-    'order_status_url': '',
-    'subtotal_line_items': '',
-    'discount_applications': '',
-    'payment_terms': '',
-    'refund_method_title': '',
-    'company_location': '',
-    'delivery_promise_branded_shipping_line': '',
-    */
+{% assign requires_shipping = false %}
+{% for line_item in order.line_items %}
+  {% if line_item.requires_shipping %}
+    {% assign requires_shipping = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} TODO order.shipping_address and billing_address aren't formatting with format_address {% endcomment %}
+{% assign shipping_address = 'TBD' %} 
+{% assign billing_address = 'TBD' %} 
+
+{% comment %} TODO - This is currently getting set to an empty array. Need to populate it. {% endcomment %}
+{% assign transactions = "" %} 
+{% assign transaction_count = transactions | size  %}
+
+{% comment %} TODO
+{% assign due_at_date = 'TBD' %}
+{% assign shipping_discount = 'TBD' %}
+{% assign consolidated_estimated_delivery_time = 'TBD' %}
+{% assign refund_method_title = 'TBD' %}
+{% assign delivery_promise_branded_shipping_line = 'TBD' %}
 {% endcomment %}
-
