@@ -1,0 +1,8 @@
+{
+  "name": "My Store",
+  "email_accent_color": "#FF0000",
+  "email_logo_url": "http://www.example.com/logo.png",
+  "url": "http://www.example.com",
+  "shop.email_logo_width": 200,
+  "email": "test@example.com"
+}
