@@ -12,7 +12,6 @@ import {
   Button,
   FooterHelp,
   Link,
-  Toast,
   Frame,
   Scrollable,
   BlockStack,
@@ -73,7 +72,7 @@ function App() {
   const data = {
     transactions: [],
     order: orderPayload ? JSON.parse(orderPayload) : "",
-    shop: JSON.parse(shopPayload),
+    shop: shopPayload ? JSON.parse(shopPayload) : defaultShopPayload,
   };
   if (data.order && data.order.line_items) {
     data.subtotal_line_items = data.order.line_items;
@@ -90,6 +89,12 @@ function App() {
         <Toaster />
         <Page
           title="Shopify To Mechanic Email Template Converter"
+          primaryAction={{
+            content: "Copy",
+            icon: ClipboardIcon,
+            disabled: shopifyTemplate ? false : true,
+            onAction: handleCopyButton,
+          }}
           subtitle="Easily convert your Shopify email notification liquid templates to liquid that can be used in Mechanic tasks"
         >
           <BlockStack gap="500">
@@ -100,14 +105,13 @@ function App() {
                     <Text as="h2" variant="headingSm">
                       Shopify Template
                     </Text>
-                    <Scrollable style={{ height: "200px" }}>
-                      <TextField
-                        value={shopifyTemplate}
-                        onChange={handleShopifyTemplateChange}
-                        multiline={4}
-                        autoComplete="off"
-                      />
-                    </Scrollable>
+                    <TextField
+                      maxHeight="150px"
+                      value={shopifyTemplate}
+                      onChange={handleShopifyTemplateChange}
+                      multiline={8}
+                      autoComplete="off"
+                    />
                   </BlockStack>
                 </Card>
               </Grid.Cell>
@@ -118,18 +122,14 @@ function App() {
                       <Text as="h2" variant="headingSm">
                         Generated Mechanic template
                       </Text>
-                      <Button icon={ClipboardIcon} onClick={handleCopyButton}>
-                        Copy
-                      </Button>
                     </InlineStack>
-                    <Scrollable style={{ height: "200px" }}>
-                      <TextField
-                        disabled
-                        value={mechanicTemplate}
-                        multiline={4}
-                        autoComplete="off"
-                      />
-                    </Scrollable>
+                    <TextField
+                      maxHeight="150px"
+                      disabled
+                      value={mechanicTemplate}
+                      multiline={8}
+                      autoComplete="off"
+                    />
                   </BlockStack>
                 </Card>
               </Grid.Cell>
@@ -141,14 +141,13 @@ function App() {
                     <Text as="h2" variant="headingSm">
                       Order Payload
                     </Text>
-                    <Scrollable style={{ height: "200px" }}>
-                      <TextField
-                        value={orderPayload}
-                        onChange={handleOrderPayloadChange}
-                        multiline={4}
-                        autoComplete="off"
-                      />
-                    </Scrollable>
+                    <TextField
+                      maxHeight="150px"
+                      value={orderPayload}
+                      onChange={handleOrderPayloadChange}
+                      multiline={8}
+                      autoComplete="off"
+                    />
                   </BlockStack>
                 </Card>
               </Grid.Cell>
@@ -158,14 +157,13 @@ function App() {
                     <Text as="h2" variant="headingSm">
                       Shop Details
                     </Text>
-                    <Scrollable style={{ height: "200px" }}>
-                      <TextField
-                        value={shopPayload}
-                        onChange={handleShopPayloadChange}
-                        multiline={4}
-                        autoComplete="off"
-                      />
-                    </Scrollable>
+                    <TextField
+                      maxHeight="150px"
+                      value={shopPayload}
+                      onChange={handleShopPayloadChange}
+                      multiline={8}
+                      autoComplete="off"
+                    />
                   </BlockStack>
                 </Card>
               </Grid.Cell>
@@ -185,7 +183,7 @@ function App() {
                     : ""
                 }
                 width="100%"
-                height="1000"
+                height="1100"
               ></iframe>
             </Card>
           </BlockStack>
