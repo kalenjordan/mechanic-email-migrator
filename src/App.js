@@ -75,9 +75,11 @@ function App() {
     order: orderPayload ? JSON.parse(orderPayload) : "",
     shop: JSON.parse(shopPayload),
   };
-  data.subtotal_line_items = data.order.line_items;
-  for (let line of data.subtotal_line_items) {
-    line.final_line_price = line.price * line.quantity;
+  if (data.order && data.order.line_items) {
+    data.subtotal_line_items = data.order.line_items;
+    for (let line of data.subtotal_line_items) {
+      line.final_line_price = line.price * line.quantity;
+    }
   }
 
   const { status, markup } = useLiquid(mechanicTemplate, data);
