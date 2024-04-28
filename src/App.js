@@ -23,6 +23,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { ClipboardIcon } from "@shopify/polaris-icons";
 import { useLiquid, RENDER_STATUS } from "react-liquid";
 import packageJson from "../package.json";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   const [shopifyTemplate, setShopifyTemplate] = useLocalStorage(
@@ -66,23 +67,11 @@ function App() {
     setShopPayload(shopPayload);
   }, []);
 
-  const [toastActive, setToastActive] = useState(false);
-
-  const toggleToastActive = useCallback(
-    () => setToastActive((toastActive) => !toastActive),
-    []
-  );
-
-  const toastMarkup = toastActive ? (
-    <Toast
-      content="Copied Mechanic template to clipboard"
-      onDismiss={toggleToastActive}
-    />
-  ) : null;
-
   const handleCopyButton = useCallback(() => {
     navigator.clipboard.writeText(mechanicTemplate);
-    toggleToastActive();
+    toast.success("Copied Mechanic template to clipboard", {
+      duration: 2000,
+    });
   }, []);
 
   const data = {
@@ -90,11 +79,17 @@ function App() {
     order: orderPayload ? JSON.parse(orderPayload) : "",
     shop: JSON.parse(shopPayload),
   };
+  data.subtotal_line_items = data.order.line_items;
+  for (let line of data.subtotal_line_items) {
+    line.final_line_price = line.price * line.quantity;
+  }
+
   const { status, markup } = useLiquid(mechanicTemplate, data);
 
   return (
     <AppProvider i18n={enTranslations}>
       <Frame>
+        <Toaster />
         <Page
           title="Shopify To Mechanic Email Template Converter"
           subtitle="Easily convert your Shopify email notification liquid templates to liquid that can be used in Mechanic tasks"
@@ -128,7 +123,6 @@ function App() {
                       <Button icon={ClipboardIcon} onClick={handleCopyButton}>
                         Copy
                       </Button>
-                      {toastMarkup}
                     </InlineStack>
                     <Scrollable style={{ height: "200px" }}>
                       <TextField
