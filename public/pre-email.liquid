@@ -17,17 +17,8 @@
 {% assign discount_applications = order.discount_applications %}
 
 {% assign total_tip = order.total_tip_received %}
-{% assign total_duties = 'TBD sum this up' %}
-
-{% assign due_at_date = 'TBD' %}
-{% assign shipping_discount = 'TBD' %}
-{% assign consolidated_estimated_delivery_time = 'TBD' %}
-{% assign refund_method_title = 'TBD' %}
-{% assign delivery_promise_branded_shipping_line = 'TBD' %}
-
+{% assign total_duties = order.current_total_duties_set.shop_money.amount  %}
 {% assign payment_terms = order.payment_terms %}
-{% assign transactions = "" %} {% comment %} TBD {% endcomment %}
-{% assign transaction_count = transactions | size  %}
 
 {% assign requires_shipping = false %}
 {% for line_item in order.line_items %}
@@ -36,3 +27,15 @@
     {% break %}
   {% endif %}
 {% endfor %}
+
+{% comment %} TODO - This is currently getting set to an empty array. Need to populate it. {% endcomment %}
+{% assign transactions = "" %} 
+{% assign transaction_count = transactions | size  %}
+
+{% comment %} TODO
+{% assign due_at_date = 'TBD' %}
+{% assign shipping_discount = 'TBD' %}
+{% assign consolidated_estimated_delivery_time = 'TBD' %}
+{% assign refund_method_title = 'TBD' %}
+{% assign delivery_promise_branded_shipping_line = 'TBD' %}
+{% endcomment %}
