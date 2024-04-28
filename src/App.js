@@ -48,10 +48,6 @@ function App() {
     .then((r) => r.text())
     .then((text) => {
       mechanicTemplate = text + shopifyTemplate;
-      mechanicTemplate = mechanicTemplate.replace(
-        "/assets/notifications/styles.css",
-        homepageUrl + "/email-styles.css"
-      );
       setMechanicTemplate(mechanicTemplate);
     });
 
@@ -178,7 +174,10 @@ function App() {
               </Text>
               <iframe
                 id="email-preview"
-                srcDoc={markup}
+                srcDoc={markup.replace(
+                  "/assets/notifications/styles.css",
+                  homepageUrl + "/email-styles.css"
+                )}
                 width="100%"
                 height="1000"
               ></iframe>
