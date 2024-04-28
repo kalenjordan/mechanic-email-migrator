@@ -33,6 +33,7 @@ function App() {
   let defaultShopPayload = {
     name: "My Store",
     email_accent_color: "#1990c6",
+    email: "test@example.com",
   };
 
   let [orderPayload, setOrderPayload] = useLocalStorage("order_payload", "");
@@ -42,6 +43,7 @@ function App() {
   );
   let [mechanicTemplate, setMechanicTemplate] = useState();
 
+  // TODO make url relative
   let homepageUrl = packageJson.homepage;
   fetch("/mechanic-email-migrator/pre-email.liquid")
     .then((r) => r.text())
@@ -49,6 +51,25 @@ function App() {
       mechanicTemplate = text + shopifyTemplate;
       setMechanicTemplate(mechanicTemplate);
     });
+
+  const handleMarkupForPreview = () => {
+    if (!markup) {
+      return "";
+    }
+
+    markup = markup.replace(
+      "/assets/notifications/styles.css",
+      homepageUrl + "/email-styles.css"
+    );
+
+    // TODO make url relative
+    markup = markup.replace(
+      "notifications/spacer.png",
+      "/mechanic-email-migrator/spacer.png"
+    );
+
+    return markup;
+  };
 
   const handleShopifyTemplateChange = useCallback((shopifyTemplate) => {
     setShopifyTemplate(shopifyTemplate);
@@ -69,10 +90,22 @@ function App() {
     });
   }, []);
 
+  let order = "";
+  try {
+    order = JSON.parse(orderPayload);
+  } catch (error) {
+    // do nothing
+  }
+  let shop = "";
+  try {
+    shop = JSON.parse(shopPayload ? shopPayload : defaultShopPayload);
+  } catch (error) {
+    // do nothing
+  }
   const data = {
     transactions: [],
     order: orderPayload ? JSON.parse(orderPayload) : "",
-    shop: shopPayload ? JSON.parse(shopPayload) : defaultShopPayload,
+    shop: shop,
   };
   if (data.order && data.order.line_items) {
     data.subtotal_line_items = data.order.line_items;
@@ -81,7 +114,7 @@ function App() {
     }
   }
 
-  const { status, markup } = useLiquid(mechanicTemplate, data);
+  let { status, markup } = useLiquid(mechanicTemplate, data);
 
   return (
     <AppProvider i18n={enTranslations}>
@@ -174,14 +207,7 @@ function App() {
               </Text>
               <iframe
                 id="email-preview"
-                srcDoc={
-                  markup
-                    ? markup.replace(
-                        "/assets/notifications/styles.css",
-                        homepageUrl + "/email-styles.css"
-                      )
-                    : ""
-                }
+                srcDoc={handleMarkupForPreview()}
                 width="100%"
                 height="1100"
               ></iframe>
