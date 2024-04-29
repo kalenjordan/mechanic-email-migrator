@@ -20,7 +20,7 @@ import "@shopify/polaris/build/esm/styles.css";
 import { useState, useCallback } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { ClipboardIcon } from "@shopify/polaris-icons";
-import { useLiquid, RENDER_STATUS } from "react-liquid";
+import { useLiquid, liquidEngine } from "react-liquid";
 import packageJson from "../package.json";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -102,19 +102,26 @@ function App() {
   } catch (error) {
     // do nothing
   }
+
   const data = {
     transactions: [],
-    order: orderPayload ? JSON.parse(orderPayload) : "",
+    order: order,
     shop: shop,
   };
-  if (data.order && data.order.line_items) {
-    data.subtotal_line_items = data.order.line_items;
-    for (let line of data.subtotal_line_items) {
-      line.final_line_price = line.price * line.quantity;
-    }
-  }
 
-  let { status, markup } = useLiquid(mechanicTemplate, data);
+  liquidEngine.registerFilter("parse_json", (initial, arg1, arg2) => {
+    return JSON.parse(initial);
+  });
+  liquidEngine.registerFilter("money", (initial, arg1, arg2) => {
+    return "$" + (initial / 100).toFixed(2);
+  });
+  liquidEngine.registerFilter("money_with_currency", (initial, arg1, arg2) => {
+    if (!initial) {
+      return "";
+    }
+    return "$" + (initial / 100).toFixed(2);
+  });
+  let { markup } = useLiquid(mechanicTemplate, data);
 
   return (
     <AppProvider i18n={enTranslations}>
