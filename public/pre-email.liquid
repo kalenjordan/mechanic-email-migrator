@@ -27,9 +27,21 @@
   {% endif %}
 {% endfor %}
 
-{% comment %} TODO order.shipping_address and billing_address aren't formatting with format_address {% endcomment %}
-{% assign shipping_address = 'TBD' %} 
-{% assign billing_address = 'TBD' %} 
+{% capture shipping_address %}
+  {{ order.shipping_address.first_name }} {{ order.shipping_address.last_name }}
+  {{ order.shipping_address.address1 }}
+  {{ order.shipping_address.address2 }}
+  <br/>{{ order.shipping_address.city }}, {{ order.shipping_address.province_code }} {{ order.shipping_address.zip }}
+  {{ order.shipping_address.country }}
+{% endcapture %}
+
+{% capture billing_address %}
+  {{ order.billing_address.first_name }} {{ order.billing_address.last_name }}
+  {{ order.billing_address.address1 }}
+  {{ order.billing_address.address2 }}
+  <br/>{{ order.billing_address.city }}, {{ order.billing_address.province_code }} {{ order.billing_address.zip }}
+  {{ order.billing_address.country }}
+{% endcapture %}
 
 {% comment %} TODO - This is currently getting set to an empty array. Need to populate it. {% endcomment %}
 {% assign transactions = "" %} 
