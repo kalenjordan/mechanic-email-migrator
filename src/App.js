@@ -214,7 +214,7 @@ function App() {
                   id="email-preview"
                   srcDoc={handleMarkupForPreview()}
                   width="100%"
-                  height="1100"
+                  height="1300"
                 ></iframe>
               </Card>
             ) : (
