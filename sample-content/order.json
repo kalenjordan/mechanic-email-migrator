@@ -1,28 +1,28 @@
 {
-  "id": 5560201806010,
-  "admin_graphql_api_id": "gid://shopify/Order/5560201806010",
+  "id": 5770087923898,
+  "admin_graphql_api_id": "gid://shopify/Order/5770087923898",
   "app_id": 580111,
   "browser_ip": "70.114.149.3",
   "buyer_accepts_marketing": false,
   "cancel_reason": null,
   "cancelled_at": null,
-  "cart_token": "c1-9ef707711b84ff9102591d356bc4ec8f",
-  "checkout_id": 33272366858426,
-  "checkout_token": "32e79aa0bbda25ccb055bf1341d7f47c",
+  "cart_token": "Z2NwLXVzLWNlbnRyYWwxOjAxSFdOMjdGMTY3NUhGRjJKWDExMThQNkI0",
+  "checkout_id": 33916999991482,
+  "checkout_token": "e2be5fec804ceab9ce21163dca9e8be0",
   "client_details": {
     "accept_language": "en-US",
     "browser_height": null,
     "browser_ip": "70.114.149.3",
     "browser_width": null,
     "session_hash": null,
-    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
   },
   "closed_at": null,
   "company": null,
-  "confirmation_number": "HL8QJ05UU",
+  "confirmation_number": "6HYKG4MRN",
   "confirmed": true,
   "contact_email": "kalenj@gmail.com",
-  "created_at": "2024-02-19T09:31:39-05:00",
+  "created_at": "2024-04-29T09:56:09-04:00",
   "currency": "USD",
   "current_subtotal_price": "10.00",
   "current_subtotal_price_set": {
@@ -48,25 +48,25 @@
     }
   },
   "current_total_duties_set": null,
-  "current_total_price": "14.90",
+  "current_total_price": "16.14",
   "current_total_price_set": {
     "shop_money": {
-      "amount": "14.90",
+      "amount": "16.14",
       "currency_code": "USD"
     },
     "presentment_money": {
-      "amount": "14.90",
+      "amount": "16.14",
       "currency_code": "USD"
     }
   },
-  "current_total_tax": "0.00",
+  "current_total_tax": "1.24",
   "current_total_tax_set": {
     "shop_money": {
-      "amount": "0.00",
+      "amount": "1.24",
       "currency_code": "USD"
     },
     "presentment_money": {
-      "amount": "0.00",
+      "amount": "1.24",
       "currency_code": "USD"
     }
   },
@@ -81,12 +81,12 @@
   "landing_site_ref": null,
   "location_id": null,
   "merchant_of_record_app_id": null,
-  "name": "#1001",
-  "note": "2",
+  "name": "#1002",
+  "note": null,
   "note_attributes": [],
-  "number": 1,
-  "order_number": 1001,
-  "order_status_url": "https://kalen-test-store.myshopify.com/52529004730/orders/43a76f212d2dda66209d1cfa9b51ddc1/authenticate?key=f2531545c2124d346900fd11a6275a4d&none=VgdUBlZLXA",
+  "number": 2,
+  "order_number": 1002,
+  "order_status_url": "https://kalen-test-store.myshopify.com/52529004730/orders/04674370cddd0622036d55bc0756eb5e/authenticate?key=bf4ceebf63b5450294ee00bd9ec2be1c&none=VgdUBlZLXA",
   "original_total_additional_fees_set": null,
   "original_total_duties_set": null,
   "payment_gateway_names": [
@@ -95,10 +95,10 @@
   "phone": null,
   "po_number": null,
   "presentment_currency": "USD",
-  "processed_at": "2024-02-19T09:31:36-05:00",
-  "reference": "3d775b8c2b2fd066d1a6dffccfdce30d",
+  "processed_at": "2024-04-29T09:56:07-04:00",
+  "reference": "de282af6414374be91d25378bc802f16",
   "referring_site": "",
-  "source_identifier": "3d775b8c2b2fd066d1a6dffccfdce30d",
+  "source_identifier": "de282af6414374be91d25378bc802f16",
   "source_name": "web",
   "source_url": null,
   "subtotal_price": "10.00",
@@ -114,10 +114,43 @@
   },
   "tags": "email, sent:kalenj@gmail.com",
   "tax_exempt": false,
-  "tax_lines": [],
+  "tax_lines": [
+    {
+      "price": "0.30",
+      "rate": 0.02,
+      "title": "Frisco City Tax",
+      "price_set": {
+        "shop_money": {
+          "amount": "0.30",
+          "currency_code": "USD"
+        },
+        "presentment_money": {
+          "amount": "0.30",
+          "currency_code": "USD"
+        }
+      },
+      "channel_liable": false
+    },
+    {
+      "price": "0.94",
+      "rate": 0.0625,
+      "title": "Texas State Tax",
+      "price_set": {
+        "shop_money": {
+          "amount": "0.94",
+          "currency_code": "USD"
+        },
+        "presentment_money": {
+          "amount": "0.94",
+          "currency_code": "USD"
+        }
+      },
+      "channel_liable": false
+    }
+  ],
   "taxes_included": false,
   "test": true,
-  "token": "43a76f212d2dda66209d1cfa9b51ddc1",
+  "token": "04674370cddd0622036d55bc0756eb5e",
   "total_discounts": "0.00",
   "total_discounts_set": {
     "shop_money": {
@@ -141,14 +174,14 @@
     }
   },
   "total_outstanding": "0.00",
-  "total_price": "14.90",
+  "total_price": "16.14",
   "total_price_set": {
     "shop_money": {
-      "amount": "14.90",
+      "amount": "16.14",
       "currency_code": "USD"
     },
     "presentment_money": {
-      "amount": "14.90",
+      "amount": "16.14",
       "currency_code": "USD"
     }
   },
@@ -162,45 +195,45 @@
       "currency_code": "USD"
     }
   },
-  "total_tax": "0.00",
+  "total_tax": "1.24",
   "total_tax_set": {
     "shop_money": {
-      "amount": "0.00",
+      "amount": "1.24",
       "currency_code": "USD"
     },
     "presentment_money": {
-      "amount": "0.00",
+      "amount": "1.24",
       "currency_code": "USD"
     }
   },
   "total_tip_received": "0.00",
   "total_weight": 0,
-  "updated_at": "2024-04-27T06:11:39-04:00",
+  "updated_at": "2024-04-30T09:12:45-04:00",
   "user_id": null,
   "billing_address": {
-    "first_name": "Kalen",
+    "first_name": "kalen",
     "address1": "123 abc road",
     "phone": null,
-    "city": "glendale",
-    "zip": "91201",
-    "province": "California",
+    "city": "Georgetown",
+    "zip": "78626",
+    "province": "Texas",
     "country": "United States",
-    "last_name": "Jordan",
+    "last_name": "jordan",
     "address2": null,
     "company": null,
-    "latitude": 34.1629905,
-    "longitude": -118.2935891,
-    "name": "Kalen Jordan",
+    "latitude": null,
+    "longitude": null,
+    "name": "kalen jordan",
     "country_code": "US",
-    "province_code": "CA"
+    "province_code": "TX"
   },
   "customer": {
     "id": 7085965639866,
     "email": "kalenj@gmail.com",
     "created_at": "2024-02-19T09:31:36-05:00",
-    "updated_at": "2024-04-21T13:19:21-04:00",
-    "first_name": "Kalen",
-    "last_name": "Jordan",
+    "updated_at": "2024-04-29T09:56:14-04:00",
+    "first_name": "kalen",
+    "last_name": "jordan",
     "state": "disabled",
     "note": "",
     "verified_email": true,
@@ -218,20 +251,20 @@
     "tax_exemptions": [],
     "admin_graphql_api_id": "gid://shopify/Customer/7085965639866",
     "default_address": {
-      "id": 8440135254202,
+      "id": 8583895941306,
       "customer_id": 7085965639866,
-      "first_name": "Kalen",
-      "last_name": "Jordan",
+      "first_name": "kalen",
+      "last_name": "jordan",
       "company": null,
       "address1": "123 abc road",
       "address2": null,
-      "city": "glendale",
-      "province": "California",
+      "city": "Georgetown",
+      "province": "Texas",
       "country": "United States",
-      "zip": "91201",
+      "zip": "78626",
       "phone": null,
-      "name": "Kalen Jordan",
-      "province_code": "CA",
+      "name": "kalen jordan",
+      "province_code": "TX",
       "country_code": "US",
       "country_name": "United States",
       "default": true
@@ -241,8 +274,8 @@
   "fulfillments": [],
   "line_items": [
     {
-      "id": 13229844136122,
-      "admin_graphql_api_id": "gid://shopify/LineItem/13229844136122",
+      "id": 13423889645754,
+      "admin_graphql_api_id": "gid://shopify/LineItem/13423889645754",
       "current_quantity": 1,
       "fulfillable_quantity": 1,
       "fulfillment_service": "manual",
@@ -287,19 +320,35 @@
       "tax_lines": [
         {
           "channel_liable": false,
-          "price": "0.00",
+          "price": "0.20",
           "price_set": {
             "shop_money": {
-              "amount": "0.00",
+              "amount": "0.20",
               "currency_code": "USD"
             },
             "presentment_money": {
-              "amount": "0.00",
+              "amount": "0.20",
               "currency_code": "USD"
             }
           },
-          "rate": 0,
-          "title": "California State Tax"
+          "rate": 0.02,
+          "title": "Frisco City Tax"
+        },
+        {
+          "channel_liable": false,
+          "price": "0.63",
+          "price_set": {
+            "shop_money": {
+              "amount": "0.63",
+              "currency_code": "USD"
+            },
+            "presentment_money": {
+              "amount": "0.63",
+              "currency_code": "USD"
+            }
+          },
+          "rate": 0.0625,
+          "title": "Texas State Tax"
         }
       ],
       "duties": [],
@@ -309,25 +358,25 @@
   "payment_terms": null,
   "refunds": [],
   "shipping_address": {
-    "first_name": "Bob",
-    "address1": "19 abc road",
-    "phone": "",
-    "city": "Glendale",
-    "zip": "91201",
-    "province": "California",
+    "first_name": "kalen",
+    "address1": "123 abc road",
+    "phone": null,
+    "city": "Georgetown",
+    "zip": "78626",
+    "province": "Texas",
     "country": "United States",
-    "last_name": "Smith",
-    "address2": "",
-    "company": "",
-    "latitude": 34.1629905,
-    "longitude": -118.2935891,
-    "name": "Bob Smith",
+    "last_name": "jordan",
+    "address2": null,
+    "company": null,
+    "latitude": 30.6487339,
+    "longitude": -97.63311300000001,
+    "name": "kalen jordan",
     "country_code": "US",
-    "province_code": "CA"
+    "province_code": "TX"
   },
   "shipping_lines": [
     {
-      "id": 4372823539898,
+      "id": 4445657891002,
       "carrier_identifier": "650f1a14fa979ec5c74d063e968411d4",
       "code": "Standard",
       "discounted_price": "4.90",
@@ -360,19 +409,35 @@
       "tax_lines": [
         {
           "channel_liable": false,
-          "price": "0.00",
+          "price": "0.10",
           "price_set": {
             "shop_money": {
-              "amount": "0.00",
+              "amount": "0.10",
               "currency_code": "USD"
             },
             "presentment_money": {
-              "amount": "0.00",
+              "amount": "0.10",
               "currency_code": "USD"
             }
           },
-          "rate": 0,
-          "title": "California State Tax"
+          "rate": 0.02,
+          "title": "Frisco City Tax"
+        },
+        {
+          "channel_liable": false,
+          "price": "0.31",
+          "price_set": {
+            "shop_money": {
+              "amount": "0.31",
+              "currency_code": "USD"
+            },
+            "presentment_money": {
+              "amount": "0.31",
+              "currency_code": "USD"
+            }
+          },
+          "rate": 0.0625,
+          "title": "Texas State Tax"
         }
       ],
       "discount_allocations": []
