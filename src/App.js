@@ -20,9 +20,10 @@ import "@shopify/polaris/build/esm/styles.css";
 import { useState, useCallback } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { ClipboardIcon } from "@shopify/polaris-icons";
-import { useLiquid, liquidEngine } from "react-liquid";
 import packageJson from "../package.json";
 import toast, { Toaster } from "react-hot-toast";
+import { Liquid } from 'liquidjs';
+
 
 function App() {
   const [shopifyTemplate, setShopifyTemplate] = useLocalStorage(
@@ -111,19 +112,18 @@ function App() {
     shop: shop,
   };
 
-  liquidEngine.registerFilter("parse_json", (initial, arg1, arg2) => {
-    return JSON.parse(initial);
+  const engine = new Liquid();
+  engine.registerFilter('money', value => {
+    return "$" + (value / 100).toFixed(2);
   });
-  liquidEngine.registerFilter("money", (initial, arg1, arg2) => {
-    return "$" + (initial / 100).toFixed(2);
+  engine.registerFilter('json_parse', value => {
+    return JSON.parse(value);
   });
-  liquidEngine.registerFilter("money_with_currency", (initial, arg1, arg2) => {
-    if (!initial) {
-      return "";
-    }
-    return "$" + (initial / 100).toFixed(2);
-  });
-  let { markup } = useLiquid(mechanicTemplate, data);
+
+  let markup = "";
+  if (mechanicTemplate) {
+     markup = engine.parseAndRenderSync(mechanicTemplate, data);
+  }
 
   return (
     <AppProvider i18n={enTranslations}>

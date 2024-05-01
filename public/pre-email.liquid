@@ -1,4 +1,4 @@
-{% assign order = shop.orders[order_id] | json %}
+{% assign order = shop.orders[order_id] %}
 {% assign id = order.id %}
 {% assign email = order.email %}
 {% assign name = order.name %}
@@ -91,7 +91,7 @@
   {% endfor %}
 ]
 {% endcapture %}
-{% assign subtotal_line_items = subtotal_line_items_json | parse_json %}
+{% assign subtotal_line_items = subtotal_line_items_json | json_parse %}
 
 {% comment %} TODO   
     note
