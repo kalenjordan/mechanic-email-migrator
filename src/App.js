@@ -103,9 +103,11 @@ function App() {
     // do nothing
   }
 
+  shop.orders = {};
+  shop.orders[order.id] = order;
+
   const data = {
-    transactions: [],
-    order: order,
+    order_id: order.id,
     shop: shop,
   };
 
